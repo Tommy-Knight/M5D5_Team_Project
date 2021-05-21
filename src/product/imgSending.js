@@ -1,6 +1,6 @@
 import express from "express"
 import createError from "http-error"
-import { getProduct, writeProduct, writeProductImage } from "../library/fs-tool"
+import { getProduct, writeProduct, writeProductImage } from "../library/fs-tool.js"
 import multer from "multer"
 
 const productRoute = express.Router()

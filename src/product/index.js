@@ -1,9 +1,9 @@
 import express from "express"
 import uniqid from "uniqid"
-import createError from "http-error"
+import createError from "http-errors"
 import { validationResult } from "express-validator"
 import { productsValidation } from "./validation.js"
-import { getProduct, writeProduct, writeProduceImage, writeProductImage } from "../library/fs-tool.js"
+import { getProduct, writeProduct } from "../library/fs-tool.js"
 import multer from "multer"
 
 const productRoutes = express.Router()
@@ -65,7 +65,7 @@ productRoutes.get("/:id", async (req, res, next) => {
         if (product) {
             res.send(product)
         } else {
-            next(createError(404, `Product with id: ${req.params.blogId} not found!`))
+            next(createError(404, `Product with id: ${req.params.id} not found!`))
         }
     } catch (error) {
         console.log(error);
@@ -84,7 +84,7 @@ productRoutes.put("/:id", async (req, res, next) => {
             await writeProduct(remainingProducts)
             res.send(editedProduct)
         } else {
-            next(createError(404, `Product with id: ${req.params.blogId} not found!`))
+            next(createError(404, `Product with id: ${req.params.id} not found!`))
         }
     } catch (error) {
         console.log(error);
@@ -100,7 +100,7 @@ productRoutes.delete(":id", async (req, res, next) => {
             await writeProduct(remainingProducts)
             res.status(204).send(`Ok the product with id:${req.params.id} is successfully deleted!`)
         } else {
-            next(createError(404, `Product with id: ${req.params.blogId} not found!`))
+            next(createError(404, `Product with id: ${req.params.id} not found!`))
         }
     } catch (error) {
         console.log(error);
