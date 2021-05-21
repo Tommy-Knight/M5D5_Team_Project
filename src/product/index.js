@@ -19,7 +19,7 @@ productRoutes.post("/", productsValidation, async (req, res, next) => {
             const newProduct = { _id: uniqid(), ...req.body, createdAt: new Date() }
             products.push(newProduct)
             await writeProduct(products)
-            req.status(201).send(newProduct)
+            res.status(201).send(newProduct)
         }
     } catch (error) {
         console.log(error)
@@ -79,7 +79,7 @@ productRoutes.put("/:id", async (req, res, next) => {
         const product = products.find(product => product._id === req.params.id)
         if (product) {
             const remainingProducts = products.filter(product => product._id !== req.params.id)
-            const editedProduct = { _id: req.params.id, ...req.body, updatedAt: new Date() }
+            const editedProduct = { _id: req.params.id, ...req.body, createdAt: product.createdAt, updatedAt: new Date() }
             remainingProducts.push(editedProduct)
             await writeProduct(remainingProducts)
             res.send(editedProduct)
@@ -91,14 +91,14 @@ productRoutes.put("/:id", async (req, res, next) => {
         next(error)
     }
 })
-productRoutes.delete(":id", async (req, res, next) => {
+productRoutes.delete("/:id", async (req, res, next) => {
     try {
         const products = await getProduct()
         const product = products.find(product => product._id === req.params.id)
         if (product) {
             const remainingProducts = products.filter(product => product._id !== req.params.id)
             await writeProduct(remainingProducts)
-            res.status(204).send(`Ok the product with id:${req.params.id} is successfully deleted!`)
+            res.status(204).send(`Ok the product with id:${product._id} is successfully deleted!`)
         } else {
             next(createError(404, `Product with id: ${req.params.id} not found!`))
         }
