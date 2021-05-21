@@ -1,9 +1,1 @@
-[
-	{
-		"_id": "123455",
-		"comment": "A good book but definitely I don't like many parts of the plot",
-		"rate": 3,
-		"productId": "5d318e1a8541744830bef139",
-		"createdAt": "2019-08-01T12:46:45.895Z"
-	}
-]
+[{"_id":"8aazw9n548koyb9dzp","comment":"A good book but i don't like it","rate":4,"productId":"5d318e1a8541744830bef167","createdAt":"2021-05-21T12:40:21.780Z"},{"_id":"8aazw9n8b4koyc09s9","comment":"A bad book","rate":4,"productId":"5d318e1a8541744830bef167","createdAt":"2021-05-21T13:01:16.040Z"},{"_id":"8aazw9n1dokoyc34u6","comment":"A bad book","rate":4,"productId":"5d318e1a8541744830bef167","createdAt":"2021-05-21T13:03:29.597Z"},{"_id":"8aazw9n548koyb9dzp","comment":"A good book ","rate":4,"productId":"5d318e1a8541744830bef167","createdAt":"2021-05-21T12:40:21.780Z"},{"_id":"8aazw9n4j4koydp4j6","comment":"this is a good book","rate":3,"productId":"5d318e1a8541744830bef167","createdAt":"2021-05-21T13:48:35.249Z"}]

@@ -1,9 +1,11 @@
 import express from "express";
 import listEndpoints from "express-list-endpoints";
 import cors from "cors";
-// import reviewRoutes from "../review/index.js";
+
 import productRoutes from "../product/index.js";
 import productRoute from "../product/imgSending.js";
+import reviewRoutes from "../review/index.js";
+
 import {
 	badRequestErrorHandler,
 	notFoundErrorHandler,
@@ -22,9 +24,11 @@ const Port = 3001;
 server.use(express.json());
 server.use(cors());
 server.use(express.static(publicPath))
-// server.use("/reviews", reviewRoutes);
+
 server.use("/products", productRoutes)
 server.use("/product", productRoute);
+server.use("/reviews", reviewRoutes);
+
 
 server.use(badRequestErrorHandler);
 server.use(notFoundErrorHandler);
